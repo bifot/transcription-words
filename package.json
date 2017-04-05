@@ -1,6 +1,6 @@
 {
   "name": "transcription-words",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Easy and crystal-clear API for transcription words.",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/bifot/transcription-words#readme",
   "dependencies": {
-    "async": "^2.3.0",
     "cheerio": "^0.22.0",
     "request": "^2.81.0"
   }

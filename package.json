@@ -1,0 +1,32 @@
+{
+  "name": "transcription-words",
+  "version": "1.0.0",
+  "description": "Easy and crystal-clear API for transcription words.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bifot/transcription-words.git"
+  },
+  "keywords": [
+    "words",
+    "transcription",
+    "string",
+    "text",
+    "word",
+    "english"
+  ],
+  "author": "Mikhail Semin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bifot/transcription-words/issues"
+  },
+  "homepage": "https://github.com/bifot/transcription-words#readme",
+  "dependencies": {
+    "async": "^2.3.0",
+    "cheerio": "^0.22.0",
+    "request": "^2.81.0"
+  }
+}

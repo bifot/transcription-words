@@ -1,31 +1,33 @@
 const request = require('request');
-const cheerio = require('cheerio');
 
-module.exports = (text, pronunciation) => {
+module.exports = (text) => {
+  const words = text.replace(/[^\w\s]/gi, '').split(' ');
+
   return new Promise((resolve, reject) => {
-    const words = text.replace(/[^\w\s]/gi, '').split(' ');
-    const transcriptions = {};
+    request({
+      url: 'https://myefe.ru/wp-admin/admin-ajax.php',
+      method: 'POST',
+      form: {
+        _n: '66ed76864e',
+        action: 'mlsw_api',
+        dir: 'en-ru',
+        func: 'get_words_info',
+        sw: 1,
+        words: words,
+      },
+      json: true
+    }, (err, res, body) => {
+      if (body.data) {
+        const transcr = [];
 
-    const requests = words.map(word => {
-      return new Promise(resolve => {
-        request(`http://wooordhunt.ru/word/${word}`, (err, res, body) => {
-          if (!err && res.statusCode == 200) {
-            const $ = cheerio.load(body);
-            const us = $('#us_tr_sound span').text().trim().replace(/\|/g, '');
-            const uk = $('#uk_tr_sound span').text().trim().replace(/\|/g, '');
-
-            if (pronunciation && pronunciation.toUpperCase() == 'US') {
-              resolve(us);
-            } else {
-              resolve(uk);
-            }
-          }
+        body.data.forEach(word => {
+          transcr.push(word.transc_data && word.transc_data.transc_gb || '');
         });
-      });
-    });
 
-    Promise.all(requests).then(results => {
-      resolve(results.join(' '));
+        resolve(transcr.join(' '));
+      } else {
+        reject(err ? err : 'unknown error');
+      }
     });
   });
 };

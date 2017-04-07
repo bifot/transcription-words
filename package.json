@@ -1,6 +1,6 @@
 {
   "name": "transcription-words",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Easy and crystal-clear API for transcription words.",
   "main": "index.js",
   "scripts": {

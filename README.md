@@ -10,13 +10,13 @@ $ npm install transcription-words
 
 ## Usage
 
-Module takes two arguments: `text` and `pronunciation`. If pronunciation isn't defined, it's equal to `UK`.
+Module takes only one argument: `text`.
 
 ```javascript
 const transcription = require('transcription-words');
 
-transcription('Hello, world!', 'us').then(body => {
-  console.log(body); // => 'həˈloʊ wɜːrld'
+transcription('Hello, world!').then(body => {
+  console.log(body); // => 'helˈəʊ wɜːld'
 });
 ```
 
